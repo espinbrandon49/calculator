@@ -2,21 +2,46 @@
 let num1 = ''
 let num2 = ''
 let operator = ''
+let solved;
 
 const add = function (num1, num2) {
-  return parseInt(num1) + parseInt(num2)
+  if (num1 % 1 === 0 && num2 % 1 === 0) {
+    solved = parseFloat(num1) + parseFloat(num2)
+    return solved
+  } else {
+    solved = parseFloat(num1) + parseFloat(num2)
+    return solved.toFixed(2)
+  }
 };
 const subtract = function (num1, num2) {
-  return parseInt(num1) - parseInt(num2)
+  if (num1 % 1 === 0 && num2 % 1 === 0) {
+    solved = parseFloat(num1) - parseFloat(num2)
+    return solved
+  } else {
+    solved = parseFloat(num1) - parseFloat(num2)
+    return solved.toFixed(2)
+  }
 };
 
 const multiply = function (num1, num2) {
-  return parseInt(num1) * parseInt(num2)
+  if (num1 % 1 === 0 && num2 % 1 === 0) {
+    solved = parseFloat(num1) * parseFloat(num2)
+    return solved
+  } else {
+    solved = parseFloat(num1) * parseFloat(num2)
+    return solved.toFixed(2)
+  }
 };
 
 const divide = function (num1, num2) {
   if (num2 != 0) {
-    return parseInt(num1) / parseInt(num2)
+    if (num1 % 1 === 0 && num2 % 1 === 0 && num1 % num2 === 0) {
+      solved = parseFloat(num1) / parseFloat(num2)
+      return solved
+    } else {
+      solved = parseFloat(num1) / parseFloat(num2)
+      return solved.toFixed(2)
+    }  
   } else {
     return 'Thanos Divided by Zero'
   }
@@ -105,7 +130,6 @@ buttonC.onclick = () => division.textContent = ''
 buttonEq.onclick = () => operate(operator, num1, num2)
 buttonAdd.onclick = () => operatorF('+')
 buttonSub.onclick = () => operatorF('-')
-//buttonDec.onclick = () => division.textContent = ('.')
 buttonDiv.onclick = () => operatorF('/')
 buttonMlt.onclick = () => operatorF('*')
 button7.onclick = () => numF(7)
@@ -118,13 +142,12 @@ button1.onclick = () => numF(1)
 button2.onclick = () => numF(2)
 button3.onclick = () => numF(3)
 button0.onclick = () => numF(0)
+buttonDec.onclick = () => numF('.')
 
 // input negatives
-// decimal
 // handle consecutive operations
 // backspace
 // display styling
 
+// decimal DONE
 // divide by zero 'Thanos Divided by Zero' DONE
-
-buttonDec.onclick = () => numF('.')
