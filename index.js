@@ -4,30 +4,47 @@ let num2 = ''
 let operator = ''
 
 const add = function (num1, num2) {
-  return num1 + num2
+  return parseInt(num1) + parseInt(num2)
 };
 const subtract = function (num1, num2) {
-  return num1 - num2
+  return parseInt(num1) - parseInt(num2)
 };
 
 const multiply = function (num1, num2) {
-  return num1 * num2
+  return parseInt(num1) * parseInt(num2)
 };
 
 const divide = function (num1, num2) {
-  return num1 / num2
+  if (num2 != 0) {
+    return parseInt(num1) / parseInt(num2)
+  } else {
+    return 'Thanos Divided by Zero'
+  }
 };
 
 const operate = function (operator, num1, num2) {
   if (operator == '+') {
-    return add(num1, num2)
+    console.log('addition')
+    const solution = (add(num1, num2))
+    division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+    console.log(solution)
   } else if (operator == '-') {
-    return subtract(num1, num2)
+    console.log('subtraction')
+    console.log(subtract(num1, num2))
+    const solution = (subtract(num1, num2))
+    division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else if (operator == '*') {
-    return multiply(num1, num2)
+    console.log('multiplication')
+    console.log(multiply(num1, num2))
+    const solution = (multiply(num1, num2))
+    division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else if (operator == '/'){
-    return divide(num1, num2)
+    console.log('division')
+    console.log(divide(num1, num2))
+    const solution = (divide(num1, num2))
+    division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else {
+    console.log('error')
     return "Error"
   }
 }
@@ -73,32 +90,41 @@ const operatorF = function (str) {
   operator += str
   operator.textContent = str
   division.textContent = `${num1} ${operator}` 
-  console.log('is operator+')
+  console.log('is operator')
   console.log(operator)
 }
 
-buttonC.onclick = () => {
+buttonCE.onclick = () => {
   division.textContent = "" 
   num1 = ''
   num2 = ''
   operator = ''
 }
 
-buttonCE.onclick = () => division.textContent = ''
-buttonEq.onclick = () => division.textContent = '='
+buttonC.onclick = () => division.textContent = ''
+buttonEq.onclick = () => operate(operator, num1, num2)
 buttonAdd.onclick = () => operatorF('+')
 buttonSub.onclick = () => operatorF('-')
-buttonDec.onclick = () => division.textContent = ('.')
+//buttonDec.onclick = () => division.textContent = ('.')
 buttonDiv.onclick = () => operatorF('/')
 buttonMlt.onclick = () => operatorF('*')
 button7.onclick = () => numF(7)
 button8.onclick = () => numF(8)
 button9.onclick = () => numF(9)
-//button4.onclick = () => numF(4)
-//button5.onclick = () => numF(5)
-//button6.onclick = () => numF(6)
-//button1.onclick = () => numF(1)
-//button2.onclick = () => numF(2)
-//button3.onclick = () => numF(3)
-//button0.onclick = () => numF(0)
+button4.onclick = () => numF(4)
+button5.onclick = () => numF(5)
+button6.onclick = () => numF(6)
+button1.onclick = () => numF(1)
+button2.onclick = () => numF(2)
+button3.onclick = () => numF(3)
+button0.onclick = () => numF(0)
 
+// input negatives
+// decimal
+// handle consecutive operations
+// backspace
+// display styling
+
+// divide by zero 'Thanos Divided by Zero' DONE
+
+buttonDec.onclick = () => numF('.')
