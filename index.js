@@ -61,13 +61,16 @@ const operate = function (operator, num1, num2) {
       operations()
     } else if (operator == '-') {
       solution = (subtract(num1, num2))
-      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+      division.textContent = `${solution}`
+      operations()
     } else if (operator == '*') {
       solution = (multiply(num1, num2))
-      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+      division.textContent = `${solution}`
+      operations()
     } else if (operator == '/') {
       solution = (divide(num1, num2))
-      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+      division.textContent = `${solution}`
+      operations()
     } else {
       console.log('error')
     }
@@ -78,14 +81,17 @@ const operate = function (operator, num1, num2) {
       division.textContent = `${solution}`
       operations()
     } else if (operator == '-') {
-      solution += (subtract(num1, num2))
-      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+      solution = (subtract(solution, num2))
+      division.textContent = `${solution}`
+      operations()
     } else if (operator == '*') {
-      solution += (multiply(num1, num2))
-      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+      solution = (multiply(solution, num2))
+      division.textContent = `${solution}`
+      operations()
     } else if (operator == '/') {
-      solution += (divide(num1, num2))
-      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+      solution = (divide(solution, num2))
+      division.textContent = `${solution}`
+      operations()
     } else {
       console.log('error')
     }
