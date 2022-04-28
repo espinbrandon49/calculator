@@ -48,17 +48,17 @@ const divide = function (num1, num2) {
   }
 };
 
+const operations = () => {
+  num1 = ''
+  num2 = ''
+  operator = ''
+} 
 const operate = function (operator, num1, num2) {
-  const operations = () => {
-    num1 = ''
-    num2 = ''
-    operator = ''
-  } 
   if (typeof(solution) != 'number') {
     if (operator == '+') {
       solution = (add(num1, num2))
       division.textContent = `${solution}`
-      console.log(operate())
+      operations()
     } else if (operator == '-') {
       solution = (subtract(num1, num2))
       division.textContent = `${num1} ${operator} ${num2} = ${solution}`
@@ -74,8 +74,9 @@ const operate = function (operator, num1, num2) {
     return console.log(solution)
   } else {
     if (operator == '+') {
-      solution += (add(solution, num2))
-      division.textContent = `${solution} ${operator} ${num2} = ${solution}`
+      solution = (add(solution, num2))
+      division.textContent = `${solution}`
+      operations()
     } else if (operator == '-') {
       solution += (subtract(num1, num2))
       division.textContent = `${num1} ${operator} ${num2} = ${solution}`
@@ -123,7 +124,7 @@ const numF = function (num) {
   } else {
     num2 += num
     num2.textContent = num
-    division.textContent = `${num1} ${operator} ${num2}`
+    division.textContent = `${num2}`
   }
 }
 
@@ -132,11 +133,9 @@ const operatorF = function (str) {
   if (operator.length == 0) {
     operator += str
     operator.textContent = str
-    division.textContent = `${num1} ${operator}`
+    division.textContent = `${operator}`
   } else {
-    operator = ''
-    num1 = ''
-    num2 = ''
+    operations()
     operator += str
     operator.textContent = str
     division.textContent = `${solution} ${operator}`
@@ -149,7 +148,7 @@ buttonCE.onclick = () => {
   num1 = ''
   num2 = ''
   operator = ''
-  //solution = ''
+  solution = ''
 }
 
 //BACKSPACE BUTTON
