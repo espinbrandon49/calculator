@@ -129,9 +129,18 @@ const numF = function (num) {
 
 // OPERATOR BUTTONS
 const operatorF = function (str) {
-  operator += str
-  operator.textContent = str
-  division.textContent = `${num1} ${operator}`
+  if (operator.length == 0) {
+    operator += str
+    operator.textContent = str
+    division.textContent = `${num1} ${operator}`
+  } else {
+    operator = ''
+    num1 = ''
+    num2 = ''
+    operator += str
+    operator.textContent = str
+    division.textContent = `${solution} ${operator}`
+  }
 }
 
 // CLEAR EVERYTHING BUTTON
