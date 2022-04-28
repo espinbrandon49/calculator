@@ -2,13 +2,13 @@
 let num1 = ''
 let num2 = ''
 let operator = ''
-let solution = 0
+let solution; 
 let solved;
 
 const add = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
     solved = parseFloat(num1) + parseFloat(num2)
-    return solved
+    return solved 
   } else {
     solved = parseFloat(num1) + parseFloat(num2)
     return solved.toFixed(2)
@@ -50,23 +50,24 @@ const divide = function (num1, num2) {
 
 const operate = function (operator, num1, num2) {
   if (operator == '+') {
-    const solution = (add(num1, num2))
+    solution = (add(num1, num2))
     division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else if (operator == '-') {
-    const solution = (subtract(num1, num2))
+    solution = (subtract(num1, num2))
     division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else if (operator == '*') {
-    const solution = (multiply(num1, num2))
+    solution = (multiply(num1, num2))
     division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else if (operator == '/'){
-    const solution = (divide(num1, num2))
+    solution = (divide(num1, num2))
     division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else {
     console.log('error')
   }
+  return console.log(typeof(solution)) 
 }
 
-//DISPLAY
+//BUTTONS
 const division = document.querySelector('.display')
 const buttonC = document.querySelector('.clear');
 const buttonCE = document.querySelector('.clear-everything');
@@ -196,6 +197,7 @@ buttonNeg.onclick = () => numNeg('-')
 // handle if equal is used with only 1 operand and an operator
 // handle if equal is used with only an operator
 // handle if equal is used with multiple operators
+// if float only has 1 or less decimals
 
 //handle if equal is used with only 1 operand DONE
 //input negatives DONE
