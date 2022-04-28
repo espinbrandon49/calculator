@@ -1,7 +1,8 @@
-//CALCULATIONS
+// OPERATIONS
 let num1 = ''
 let num2 = ''
 let operator = ''
+let solution = 0
 let solved;
 
 const add = function (num1, num2) {
@@ -49,28 +50,19 @@ const divide = function (num1, num2) {
 
 const operate = function (operator, num1, num2) {
   if (operator == '+') {
-    console.log('addition')
     const solution = (add(num1, num2))
     division.textContent = `${num1} ${operator} ${num2} = ${solution}`
-    console.log(solution)
   } else if (operator == '-') {
-    console.log('subtraction')
-    console.log(subtract(num1, num2))
     const solution = (subtract(num1, num2))
     division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else if (operator == '*') {
-    console.log('multiplication')
-    console.log(multiply(num1, num2))
     const solution = (multiply(num1, num2))
     division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else if (operator == '/'){
-    console.log('division')
-    console.log(divide(num1, num2))
     const solution = (divide(num1, num2))
     division.textContent = `${num1} ${operator} ${num2} = ${solution}`
   } else {
     console.log('error')
-    return "Error"
   }
 }
 
@@ -94,31 +86,29 @@ const button0 = document.querySelector('.zero');
 const buttonDec = document.querySelector('.decimal');
 const buttonDiv = document.querySelector('.divide');
 const buttonMlt = document.querySelector('.multiply');
+const buttonNeg = document.querySelector('.negative');
 
+// NUMBER BUTTONS
 const numF = function (num) {
   if (operator.length == 0) {
     num1 += num
     num1.textContent = num
     division.textContent = `${num1}`
-    console.log('is num1F')
-    console.log(num1)
   } else {
     num2 += num
     num2.textContent = num
     division.textContent = `${num1} ${operator} ${num2}`
-    console.log('is num2F')
-    console.log(num1, operator, num2)
   }
 }
 
+// OPERATOR BUTTONS
 const operatorF = function (str) {
   operator += str
   operator.textContent = str
   division.textContent = `${num1} ${operator}` 
-  console.log('is operator')
-  console.log(operator)
 }
 
+// CLEAR EVERYTHING BUTTON
 buttonCE.onclick = () => {
   division.textContent = "" 
   num1 = ''
@@ -126,7 +116,61 @@ buttonCE.onclick = () => {
   operator = ''
 }
 
-buttonC.onclick = () => division.textContent = ''
+//BACKSPACE BUTTON
+function update1 () {
+  division.textContent = `${num1}`
+}
+function update2 () {
+  division.textContent = `${num1} ${operator} ${num2}`
+}
+function updateOp () {
+  division.textContent = `${num1}`
+}
+const backspace = function (str) {  
+  if (operator.length == 0) {
+    str = `${num1}`
+    let newStr = str.slice(0, -1)
+    num1 = newStr
+    update1()
+  } else if (operator.length != 0 && num1.length != 0 && num2.length == 0){
+    str = `${operator}`
+    let newStr = str.slice(0, -1)
+    operator = newStr
+    updateOp()
+  } else {
+    str = `${num2}`
+    let newStr = str.slice(0, -1)
+    num2 = newStr
+    update2()
+  }
+}
+// ADD NEGATIVE BUTTON
+const numNeg = function (str) {
+  if (operator.length == 0) {
+    if (typeof(num1) == 'string' && num1.length == 0){
+      num1 += str
+      num1.textContent = str
+      division.textContent = `${num1}`
+    } else {
+      num1 *= -1 
+      num1.textContent = str
+      division.textContent = `${num1}`
+    }
+  } else {
+    if (typeof(num2) == 'string' && num2.length == 0){
+      num2 += str
+      num2.textContent = str
+      division.textContent = `${num1} ${operator} ${num2}`
+    } else {
+      num2 *= -1 
+      num2.textContent = str
+      division.textContent = `${num1} ${operator} ${num2}`
+    }
+  }
+};
+
+//BUTTON CLICKS
+buttonC.onclick = () => backspace()
 buttonEq.onclick = () => operate(operator, num1, num2)
 buttonAdd.onclick = () => operatorF('+')
 buttonSub.onclick = () => operatorF('-')
@@ -143,11 +187,20 @@ button2.onclick = () => numF(2)
 button3.onclick = () => numF(3)
 button0.onclick = () => numF(0)
 buttonDec.onclick = () => numF('.')
+buttonNeg.onclick = () => numNeg('-')
 
-// input negatives
+
 // handle consecutive operations
-// backspace
 // display styling
+// make a placeholder 0
+// handle if equal is used with only 1 operand and an operator
+// handle if equal is used with only an operator
+// handle if equal is used with multiple operators
 
+//handle if equal is used with only 1 operand DONE
+//input negatives DONE
+// handle if equal is used only DONE
+// backspace DONE
 // decimal DONE
 // divide by zero 'Thanos Divided by Zero' DONE
+
