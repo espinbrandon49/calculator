@@ -2,13 +2,13 @@
 let num1 = ''
 let num2 = ''
 let operator = ''
-let solution; 
+let solution;
 let solved;
 
 const add = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
     solved = parseFloat(num1) + parseFloat(num2)
-    return solved 
+    return solved
   } else {
     solved = parseFloat(num1) + parseFloat(num2)
     return solved.toFixed(2)
@@ -42,29 +42,54 @@ const divide = function (num1, num2) {
     } else {
       solved = parseFloat(num1) / parseFloat(num2)
       return solved.toFixed(2)
-    }  
+    }
   } else {
     return 'Thanos Divided by Zero'
   }
 };
 
 const operate = function (operator, num1, num2) {
-  if (operator == '+') {
-    solution = (add(num1, num2))
-    division.textContent = `${num1} ${operator} ${num2} = ${solution}`
-  } else if (operator == '-') {
-    solution = (subtract(num1, num2))
-    division.textContent = `${num1} ${operator} ${num2} = ${solution}`
-  } else if (operator == '*') {
-    solution = (multiply(num1, num2))
-    division.textContent = `${num1} ${operator} ${num2} = ${solution}`
-  } else if (operator == '/'){
-    solution = (divide(num1, num2))
-    division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+  const operations = () => {
+    num1 = ''
+    num2 = ''
+    operator = ''
+  } 
+  if (typeof(solution) != 'number') {
+    if (operator == '+') {
+      solution = (add(num1, num2))
+      division.textContent = `${solution}`
+      console.log(operate())
+    } else if (operator == '-') {
+      solution = (subtract(num1, num2))
+      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+    } else if (operator == '*') {
+      solution = (multiply(num1, num2))
+      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+    } else if (operator == '/') {
+      solution = (divide(num1, num2))
+      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+    } else {
+      console.log('error')
+    }
+    return console.log(solution)
   } else {
-    console.log('error')
+    if (operator == '+') {
+      solution += (add(solution, num2))
+      division.textContent = `${solution} ${operator} ${num2} = ${solution}`
+    } else if (operator == '-') {
+      solution += (subtract(num1, num2))
+      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+    } else if (operator == '*') {
+      solution += (multiply(num1, num2))
+      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+    } else if (operator == '/') {
+      solution += (divide(num1, num2))
+      division.textContent = `${num1} ${operator} ${num2} = ${solution}`
+    } else {
+      console.log('error')
+    }
+    //return console.log(solution)
   }
-  return console.log(typeof(solution)) 
 }
 
 //BUTTONS
@@ -106,34 +131,35 @@ const numF = function (num) {
 const operatorF = function (str) {
   operator += str
   operator.textContent = str
-  division.textContent = `${num1} ${operator}` 
+  division.textContent = `${num1} ${operator}`
 }
 
 // CLEAR EVERYTHING BUTTON
 buttonCE.onclick = () => {
-  division.textContent = "" 
+  division.textContent = ""
   num1 = ''
   num2 = ''
   operator = ''
+  //solution = ''
 }
 
 //BACKSPACE BUTTON
-function update1 () {
+function update1() {
   division.textContent = `${num1}`
 }
-function update2 () {
+function update2() {
   division.textContent = `${num1} ${operator} ${num2}`
 }
-function updateOp () {
+function updateOp() {
   division.textContent = `${num1}`
 }
-const backspace = function (str) {  
+const backspace = function (str) {
   if (operator.length == 0) {
     str = `${num1}`
     let newStr = str.slice(0, -1)
     num1 = newStr
     update1()
-  } else if (operator.length != 0 && num1.length != 0 && num2.length == 0){
+  } else if (operator.length != 0 && num1.length != 0 && num2.length == 0) {
     str = `${operator}`
     let newStr = str.slice(0, -1)
     operator = newStr
@@ -148,22 +174,22 @@ const backspace = function (str) {
 // ADD NEGATIVE BUTTON
 const numNeg = function (str) {
   if (operator.length == 0) {
-    if (typeof(num1) == 'string' && num1.length == 0){
+    if (typeof (num1) == 'string' && num1.length == 0) {
       num1 += str
       num1.textContent = str
       division.textContent = `${num1}`
     } else {
-      num1 *= -1 
+      num1 *= -1
       num1.textContent = str
       division.textContent = `${num1}`
     }
   } else {
-    if (typeof(num2) == 'string' && num2.length == 0){
+    if (typeof (num2) == 'string' && num2.length == 0) {
       num2 += str
       num2.textContent = str
       division.textContent = `${num1} ${operator} ${num2}`
     } else {
-      num2 *= -1 
+      num2 *= -1
       num2.textContent = str
       division.textContent = `${num1} ${operator} ${num2}`
     }
@@ -192,7 +218,7 @@ buttonNeg.onclick = () => numNeg('-')
 
 
 // handle consecutive operations
-// display styling
+// style display 
 // make a placeholder 0
 // handle if equal is used with only 1 operand and an operator
 // handle if equal is used with only an operator
@@ -205,4 +231,3 @@ buttonNeg.onclick = () => numNeg('-')
 // backspace DONE
 // decimal DONE
 // divide by zero 'Thanos Divided by Zero' DONE
-
