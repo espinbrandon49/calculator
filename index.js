@@ -11,7 +11,7 @@ const add = function (num1, num2) {
     return solved
   } else {
     solved = parseFloat(num1) + parseFloat(num2)
-    return solved.toFixed(2)
+    return parseFloat(solved.toFixed(2))
   }
 };
 const subtract = function (num1, num2) {
@@ -20,7 +20,7 @@ const subtract = function (num1, num2) {
     return solved
   } else {
     solved = parseFloat(num1) - parseFloat(num2)
-    return solved.toFixed(2)
+    return parseFloat(solved.toFixed(2))
   }
 };
 
@@ -30,7 +30,7 @@ const multiply = function (num1, num2) {
     return solved
   } else {
     solved = parseFloat(num1) * parseFloat(num2)
-    return solved.toFixed(2)
+    return parseFloat(solved.toFixed(2))
   }
 };
 
@@ -41,7 +41,7 @@ const divide = function (num1, num2) {
       return solved
     } else {
       solved = parseFloat(num1) / parseFloat(num2)
-      return solved.toFixed(2)
+      return parseFloat(solved.toFixed(2))
     }
   } else {
     return 'Thanos Divided by Zero'
@@ -53,11 +53,22 @@ const operations = () => {
   num2 = ''
   operator = ''
 } 
+const review1 = () => {
+  console.log('is1' + ' ' + num1, operator, num2, '=' + ' ' + solution)
+  console.log(typeof(solution), typeof(num1), typeof(num2))
+} 
+
+const review2 = () => {
+  console.log('is2' + ' ' + num1, operator, num2, '=' + ' ' + solution)
+  console.log(typeof(solution), typeof(num1), typeof(num2))
+}
+
 const operate = function (operator, num1, num2) {
   if (typeof(solution) != 'number') {
     if (operator == '+') {
       solution = (add(num1, num2))
       division.textContent = `${solution}`
+      review1()
       operations()
     } else if (operator == '-') {
       solution = (subtract(num1, num2))
@@ -74,11 +85,11 @@ const operate = function (operator, num1, num2) {
     } else {
       console.log('error')
     }
-    return console.log(solution)
   } else {
     if (operator == '+') {
       solution = (add(solution, num2))
       division.textContent = `${solution}`
+      review2()
       operations()
     } else if (operator == '-') {
       solution = (subtract(solution, num2))
@@ -95,7 +106,6 @@ const operate = function (operator, num1, num2) {
     } else {
       console.log('error')
     }
-    //return console.log(solution)
   }
 }
 
@@ -139,12 +149,12 @@ const operatorF = function (str) {
   if (operator.length == 0) {
     operator += str
     operator.textContent = str
-    division.textContent = `${operator}`
+    //division.textContent = `${operator}`
   } else {
     operations()
     operator += str
     operator.textContent = str
-    division.textContent = `${solution} ${operator}`
+    //division.textContent = `${solution} ${operator}`
   }
 }
 
@@ -162,7 +172,7 @@ function update1() {
   division.textContent = `${num1}`
 }
 function update2() {
-  division.textContent = `${num1} ${operator} ${num2}`
+  division.textContent = `${num2}`
 }
 function updateOp() {
   division.textContent = `${num1}`
@@ -201,11 +211,11 @@ const numNeg = function (str) {
     if (typeof (num2) == 'string' && num2.length == 0) {
       num2 += str
       num2.textContent = str
-      division.textContent = `${num1} ${operator} ${num2}`
+      division.textContent = `${num2}`
     } else {
       num2 *= -1
       num2.textContent = str
-      division.textContent = `${num1} ${operator} ${num2}`
+      division.textContent = `${num2}`
     }
   }
 };
@@ -230,18 +240,20 @@ button0.onclick = () => numF(0)
 buttonDec.onclick = () => numF('.')
 buttonNeg.onclick = () => numNeg('-')
 
-
-// handle consecutive operations
 // style display 
 // make a placeholder 0
 // handle if equal is used with only 1 operand and an operator
 // handle if equal is used with only an operator
 // handle if equal is used with multiple operators
-// if float only has 1 or less decimals
+// handle more than 2 operands (if operator is already present, second operator instigates operate() )
 
-//handle if equal is used with only 1 operand DONE
-//input negatives DONE
+// Negator Bug DONE
+// Backspace bug DONE
+// handle consecutive operations DONE
+// handle if equal is used with only 1 operand DONE
+// input negatives DONE
 // handle if equal is used only DONE
 // backspace DONE
 // decimal DONE
 // divide by zero 'Thanos Divided by Zero' DONE
+// if float only has 1 or less decimals DONE
