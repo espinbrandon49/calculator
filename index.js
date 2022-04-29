@@ -7,29 +7,29 @@ let solved;
 
 const add = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) + parseFloat(num2)
+    solved = parseFloat(num1 + 0) + parseFloat(num2)
     return solved
   } else {
-    solved = parseFloat(num1) + parseFloat(num2)
+    solved = parseFloat(num1 +0) + parseFloat(num2)
     return parseFloat(solved.toFixed(2))
   }
 };
 const subtract = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) - parseFloat(num2)
+    solved = parseFloat(num1 - 0) - parseFloat(num2)
     return solved
   } else {
-    solved = parseFloat(num1) - parseFloat(num2)
+    solved = parseFloat(num1 - 0) - parseFloat(num2)
     return parseFloat(solved.toFixed(2))
   }
 };
 
 const multiply = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) * parseFloat(num2)
+    solved = parseFloat(num1 * 1) * parseFloat(num2)
     return solved
   } else {
-    solved = parseFloat(num1) * parseFloat(num2)
+    solved = parseFloat(num1 * 1) * parseFloat(num2)
     return parseFloat(solved.toFixed(2))
   }
 };
@@ -37,10 +37,10 @@ const multiply = function (num1, num2) {
 const divide = function (num1, num2) {
   if (num2 != 0) {
     if (num1 % 1 === 0 && num2 % 1 === 0 && num1 % num2 === 0) {
-      solved = parseFloat(num1) / parseFloat(num2)
+      solved = parseFloat(num1 / 1) / parseFloat(num2)
       return solved
     } else {
-      solved = parseFloat(num1) / parseFloat(0 + num2)
+      solved = parseFloat(num1 / 1) / parseFloat(0 + num2)
       return parseFloat(solved.toFixed(2))
     }
   } else {
@@ -53,6 +53,15 @@ const operations = () => {
   num2 = ''
   operator = ''
 } 
+//DEBUG
+const review1 = () => {
+  console.log('is1' + ' ' + num1, operator, num2, '=' + ' ' + solution)
+  console.log(typeof(solution), typeof(num1), typeof(num2))
+} 
+const review2 = () => {
+  console.log('is2' + ' ' + num1, operator, num2, '=' + ' ' + solution)
+  console.log(typeof(solution), typeof(num1), typeof(num2))
+}
 
 const operate = function (operator, num1, num2) {
   if (num2.length === 0) {
@@ -64,6 +73,8 @@ const operate = function (operator, num1, num2) {
         solution = (add(num1, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, solution)
+        review1()
       } else if (operator == '-') {
         solution = (subtract(num1, num2))
         division.textContent = `${solution}`
@@ -104,7 +115,8 @@ const operate = function (operator, num1, num2) {
 }
 
 //BUTTONS
-const division = document.querySelector('.display')
+const division = document.querySelector('.display');
+const divCont = division.textContent;
 const buttonC = document.querySelector('.clear');
 const buttonCE = document.querySelector('.clear-everything');
 const buttonEq = document.querySelector('.equal');
@@ -121,22 +133,29 @@ const button3 = document.querySelector('.three');
 const buttonSub = document.querySelector('.subtract');
 const button0 = document.querySelector('.zero');
 const buttonDec = document.querySelector('.decimal');
+const decimal = document.getElementById('decimal') 
 const buttonDiv = document.querySelector('.divide');
 const buttonMlt = document.querySelector('.multiply');
 const buttonNeg = document.querySelector('.negative');
 
 // NUMBER BUTTONS
 const numF = function (num) {
+  const decF1 = () => num1.indexOf('.') != -1 ? decimal.disabled = true : decimal.disabled = false
+  const decF2 = () => num2.indexOf('.') != -1 ? decimal.disabled = true : decimal.disabled = false
+
   if (operator.length == 0) {
     num1 += num
     num1.textContent = num
     division.textContent = `${num1}`
+    decF1()
   } else {
     num2 += num
     num2.textContent = num
     division.textContent = `${num2}`
+    decF2()
   }
 }
+
 // OPERATOR BUTTONS
 const operatorF = function (str) {
   if (operator.length == 0) {
@@ -156,36 +175,56 @@ buttonCE.onclick = () => {
   num2 = ''
   operator = ''
   solution = ''
+  decimal.disabled = false
 }
 
 //BACKSPACE BUTTON
-function update1() {
-  division.textContent = `${num1}`
-}
-function update2() {
-  division.textContent = `${num2}`
-}
-function updateOp() {
-  division.textContent = `${num1}`
-}
 const backspace = function (str) {
-  if (operator.length == 0) {
-    str = `${num1}`
-    let newStr = str.slice(0, -1)
-    num1 = newStr
-    update1()
-  } else if (operator.length != 0 && num1.length != 0 && num2.length == 0) {
-    str = `${operator}`
-    let newStr = str.slice(0, -1)
-    operator = newStr
-    updateOp()
+  const update1 = () => division.textContent = `${num1}`
+  const update2 = () => division.textContent = `${num2}`
+  const updateOp = () => division.textContent = `${num1}`
+  const decFBackspace = () =>  decimal.disabled = false
+
+  if (num1.indexOf(".") == num1.length - 1 || num2.indexOf(".") == num2.length - 1) {
+    if (operator.length == 0) {
+      str = `${num1}`
+      decFBackspace()
+      let newStr = str.slice(0, -1)
+      num1 = newStr
+      update1()
+    } else if (operator.length != 0 && num1.length != 0 && num2.length == 0) {
+      str = `${operator}`
+      decFBackspace()
+      let newStr = str.slice(0, -1)
+      operator = newStr
+      updateOp()
+    } else {
+      str = `${num2}`
+      decFBackspace()
+      let newStr = str.slice(0, -1)
+      num2 = newStr
+      update2()
+    }
   } else {
-    str = `${num2}`
-    let newStr = str.slice(0, -1)
-    num2 = newStr
-    update2()
+    if (operator.length == 0) {
+      str = `${num1}`
+      let newStr = str.slice(0, -1)
+      num1 = newStr
+      update1()
+    } else if (operator.length != 0 && num1.length != 0 && num2.length == 0) {
+      str = `${operator}`
+      let newStr = str.slice(0, -1)
+      operator = newStr
+      updateOp()
+    } else {
+      str = `${num2}`
+      let newStr = str.slice(0, -1)
+      num2 = newStr
+      update2()
+    }
   }
 }
+
 // ADD NEGATIVE BUTTON
 const numNeg = function (str) {
   if (operator.length == 0) {
@@ -231,32 +270,21 @@ button0.onclick = () => numF(0)
 buttonDec.onclick = () => numF('.')
 buttonNeg.onclick = () => numNeg('-')
 
-//DEBUG
-const review1 = () => {
-  console.log('is1' + ' ' + num1, operator, num2, '=' + ' ' + solution)
-  console.log(typeof(solution), typeof(num1), typeof(num2))
-} 
+// Negator Bug
+// multiple equal still an issue
 
-const review2 = () => {
-  console.log('is2' + ' ' + num1, operator, num2, '=' + ' ' + solution)
-  console.log(typeof(solution), typeof(num1), typeof(num2))
-}
-
-
-
-// don't allow multiple decimals
-// handle operator pressed first ('+' num = NaN)
-// add keyboard support
 // style display 
 // make a placeholder 0
 // refactor, esp remove some functions and logics no longer needed
+// add keypress
 
+// handle operator pressed first ('+' num = NaN) DONE
+// don't allow multiple decimals DONE
 // handle multiple '=' (6+3 == crash) DONE 
 // handle if equal is used with only 1 operand and an operator DONE
 // handle if equal is used with only an operator DONE
 // handle if equal is used with multiple operators DONE
 // handle more than 2 operands  DONE 
-// Negator Bug DONE
 // Backspace bug DONE
 // handle consecutive operations DONE
 // handle if equal is used with only 1 operand DONE
@@ -266,9 +294,3 @@ const review2 = () => {
 // decimal DONE
 // divide by zero 'Thanos Divided by Zero' DONE
 // if float only has 1 or less decimals DONE
-
-const decimal = document.getElementById('decimal') 
-const decimalOff = decimal.addEventListener("click", () => {decimal.  disabled = true })
-const decimalOn = decimal.addEventListener("click", () => {decimal.  disabled = false })
-  
-console.log(document.getElementById('decimal').attribute)
