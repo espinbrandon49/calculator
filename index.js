@@ -7,29 +7,29 @@ let solved;
 
 const add = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) + parseFloat(0 + num2)
+    solved = parseFloat(num1) + parseFloat(num2)
     return solved
   } else {
-    solved = parseFloat(num1) + parseFloat(0 + num2)
+    solved = parseFloat(num1) + parseFloat(num2)
     return parseFloat(solved.toFixed(2))
   }
 };
 const subtract = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) - parseFloat(0 + num2)
+    solved = parseFloat(num1) - parseFloat(num2)
     return solved
   } else {
-    solved = parseFloat(num1) - parseFloat(0 + num2)
+    solved = parseFloat(num1) - parseFloat(num2)
     return parseFloat(solved.toFixed(2))
   }
 };
 
 const multiply = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) * parseFloat(0 + num2)
+    solved = parseFloat(num1) * parseFloat(num2)
     return solved
   } else {
-    solved = parseFloat(num1) * parseFloat(0 + num2)
+    solved = parseFloat(num1) * parseFloat(num2)
     return parseFloat(solved.toFixed(2))
   }
 };
@@ -53,58 +53,52 @@ const operations = () => {
   num2 = ''
   operator = ''
 } 
-const review1 = () => {
-  console.log('is1' + ' ' + num1, operator, num2, '=' + ' ' + solution)
-  console.log(typeof(solution), typeof(num1), typeof(num2))
-} 
-
-const review2 = () => {
-  console.log('is2' + ' ' + num1, operator, num2, '=' + ' ' + solution)
-  console.log(typeof(solution), typeof(num1), typeof(num2))
-}
 
 const operate = function (operator, num1, num2) {
-  if (typeof(solution) != 'number') {
-    if (operator == '+') {
-      solution = (add(num1, num2))
-      division.textContent = `${solution}`
-      review1()
+  if (num2.length === 0) {
+      solution = parseFloat(num1 + num2 + solution) + 0
       operations()
-    } else if (operator == '-') {
-      solution = (subtract(num1, num2))
-      division.textContent = `${solution}`
-      operations()
-    } else if (operator == '*') {
-      solution = (multiply(num1, num2))
-      division.textContent = `${solution}`
-      operations()
-    } else if (operator == '/') {
-      solution = (divide(num1, num2))
-      division.textContent = `${solution}`
-      operations()
-    } else {
-      console.log('error')
-    }
   } else {
-    if (operator == '+') {
-      solution = (add(solution, num2))
-      division.textContent = `${solution}`
-      review2()
-      operations()
-    } else if (operator == '-') {
-      solution = (subtract(solution, num2))
-      division.textContent = `${solution}`
-      operations()
-    } else if (operator == '*') {
-      solution = (multiply(solution, num2))
-      division.textContent = `${solution}`
-      operations()
-    } else if (operator == '/') {
-      solution = (divide(solution, num2))
-      division.textContent = `${solution}`
-      operations()
+    if (typeof(solution) != 'number') {
+      if (operator == '+') {
+        solution = (add(num1, num2))
+        division.textContent = `${solution}`
+        operations()
+      } else if (operator == '-') {
+        solution = (subtract(num1, num2))
+        division.textContent = `${solution}`
+        operations()
+      } else if (operator == '*') {
+        solution = (multiply(num1, num2))
+        division.textContent = `${solution}`
+        operations()
+      } else if (operator == '/') {
+        solution = (divide(num1, num2))
+        division.textContent = `${solution}`
+        operations()
+      } else {
+        console.log('error')
+      }
     } else {
-      console.log('error')
+      if (operator == '+') {
+        solution = (add(solution, num2))
+        division.textContent = `${solution}`
+        operations()
+      } else if (operator == '-') {
+        solution = (subtract(solution, num2))
+        division.textContent = `${solution}`
+        operations()
+      } else if (operator == '*') {
+        solution = (multiply(solution, num2))
+        division.textContent = `${solution}`
+        operations()
+      } else if (operator == '/') {
+        solution = (divide(solution, num2))
+        division.textContent = `${solution}`
+        operations()
+      } else {
+        console.log('error')
+      }
     }
   }
 }
@@ -238,14 +232,30 @@ button0.onclick = () => numF(0)
 buttonDec.onclick = () => numF('.')
 buttonNeg.onclick = () => numNeg('-')
 
+//DEBUG
+const review1 = () => {
+  console.log('is1' + ' ' + num1, operator, num2, '=' + ' ' + solution)
+  console.log(typeof(solution), typeof(num1), typeof(num2))
+} 
+
+const review2 = () => {
+  console.log('is2' + ' ' + num1, operator, num2, '=' + ' ' + solution)
+  console.log(typeof(solution), typeof(num1), typeof(num2))
+}
+
+console.log(buttonDec)
+
+// don't allow multiple decimals
+// add keyboard support
 // style display 
 // make a placeholder 0
-// handle if equal is used with only 1 operand and an operator
-// handle if equal is used with only an operator
 // refactor, esp remove some functions and logics no longer needed
 
+// handle multiple '=' (6+3 == crash) DONE 
+// handle if equal is used with only 1 operand and an operator DONE
+// handle if equal is used with only an operator DONE
 // handle if equal is used with multiple operators DONE
-// handle more than 2 operands (if operator is already present, second operator instigates operate()) DONE 
+// handle more than 2 operands  DONE 
 // Negator Bug DONE
 // Backspace bug DONE
 // handle consecutive operations DONE
