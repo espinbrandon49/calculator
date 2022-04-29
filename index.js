@@ -7,29 +7,29 @@ let solved;
 
 const add = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) + parseFloat(num2)
+    solved = parseFloat(num1) + parseFloat(0 + num2)
     return solved
   } else {
-    solved = parseFloat(num1) + parseFloat(num2)
+    solved = parseFloat(num1) + parseFloat(0 + num2)
     return parseFloat(solved.toFixed(2))
   }
 };
 const subtract = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) - parseFloat(num2)
+    solved = parseFloat(num1) - parseFloat(0 + num2)
     return solved
   } else {
-    solved = parseFloat(num1) - parseFloat(num2)
+    solved = parseFloat(num1) - parseFloat(0 + num2)
     return parseFloat(solved.toFixed(2))
   }
 };
 
 const multiply = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1) * parseFloat(num2)
+    solved = parseFloat(num1) * parseFloat(0 + num2)
     return solved
   } else {
-    solved = parseFloat(num1) * parseFloat(num2)
+    solved = parseFloat(num1) * parseFloat(0 + num2)
     return parseFloat(solved.toFixed(2))
   }
 };
@@ -40,11 +40,11 @@ const divide = function (num1, num2) {
       solved = parseFloat(num1) / parseFloat(num2)
       return solved
     } else {
-      solved = parseFloat(num1) / parseFloat(num2)
+      solved = parseFloat(num1) / parseFloat(0 + num2)
       return parseFloat(solved.toFixed(2))
     }
   } else {
-    return 'Thanos Divided by Zero'
+    return `${num1} ${operator} ${num2} = Thanos Divided by Zero` 
   }
 };
 
@@ -149,12 +149,10 @@ const operatorF = function (str) {
   if (operator.length == 0) {
     operator += str
     operator.textContent = str
-    //division.textContent = `${operator}`
   } else {
-    operations()
+    operate(operator, num1, num2)
     operator += str
     operator.textContent = str
-    //division.textContent = `${solution} ${operator}`
   }
 }
 
@@ -244,9 +242,10 @@ buttonNeg.onclick = () => numNeg('-')
 // make a placeholder 0
 // handle if equal is used with only 1 operand and an operator
 // handle if equal is used with only an operator
-// handle if equal is used with multiple operators
-// handle more than 2 operands (if operator is already present, second operator instigates operate() )
+// refactor, esp remove some functions and logics no longer needed
 
+// handle if equal is used with multiple operators DONE
+// handle more than 2 operands (if operator is already present, second operator instigates operate()) DONE 
 // Negator Bug DONE
 // Backspace bug DONE
 // handle consecutive operations DONE
