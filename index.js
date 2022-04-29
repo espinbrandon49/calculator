@@ -4,16 +4,22 @@ let num2 = ''
 let operator = ''
 let solution;
 let solved;
+const operations = () => {
+  num1 = ''
+  num2 = ''
+  operator = ''
+} 
 
 const add = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
-    solved = parseFloat(num1 + 0) + parseFloat(num2)
+    solved = parseFloat(num1 * 1) + parseFloat(num2)
     return solved
   } else {
-    solved = parseFloat(num1 +0) + parseFloat(num2)
+    solved = parseFloat(num1 * 1) + parseFloat(num2)
     return parseFloat(solved.toFixed(2))
   }
 };
+
 const subtract = function (num1, num2) {
   if (num1 % 1 === 0 && num2 % 1 === 0) {
     solved = parseFloat(num1 - 0) - parseFloat(num2)
@@ -48,11 +54,6 @@ const divide = function (num1, num2) {
   }
 };
 
-const operations = () => {
-  num1 = ''
-  num2 = ''
-  operator = ''
-} 
 //DEBUG
 const review1 = () => {
   console.log('is1' + ' ' + num1, operator, num2, '=' + ' ' + solution)
@@ -73,8 +74,6 @@ const operate = function (operator, num1, num2) {
         solution = (add(num1, num2))
         division.textContent = `${solution}`
         operations()
-        console.log(num1, num2, solution)
-        review1()
       } else if (operator == '-') {
         solution = (subtract(num1, num2))
         division.textContent = `${solution}`
@@ -224,31 +223,15 @@ const backspace = function (str) {
     }
   }
 }
-
-// ADD NEGATIVE BUTTON
 const numNeg = function (str) {
   if (operator.length == 0) {
-    if (typeof (num1) == 'string' && num1.length == 0) {
-      num1 += str
-      num1.textContent = str
-      division.textContent = `${num1}`
-    } else {
-      num1 *= -1
-      num1.textContent = str
-      division.textContent = `${num1}`
-    }
+    num1 *= -1
+    division.textContent = `${num1}`
   } else {
-    if (typeof (num2) == 'string' && num2.length == 0) {
-      num2 += str
-      num2.textContent = str
-      division.textContent = `${num2}`
-    } else {
-      num2 *= -1
-      num2.textContent = str
-      division.textContent = `${num2}`
-    }
+    num2 *= -1
+    division.textContent = `${num2}`
   }
-};
+}
 
 //BUTTON CLICKS
 buttonC.onclick = () => backspace()
@@ -270,14 +253,13 @@ button0.onclick = () => numF(0)
 buttonDec.onclick = () => numF('.')
 buttonNeg.onclick = () => numNeg('-')
 
-// Negator Bug
-// multiple equal still an issue
-
 // style display 
 // make a placeholder 0
 // refactor, esp remove some functions and logics no longer needed
 // add keypress
 
+// Negator Bug
+// multiple equal still an issue DONE
 // handle operator pressed first ('+' num = NaN) DONE
 // don't allow multiple decimals DONE
 // handle multiple '=' (6+3 == crash) DONE 
@@ -294,3 +276,31 @@ buttonNeg.onclick = () => numNeg('-')
 // decimal DONE
 // divide by zero 'Thanos Divided by Zero' DONE
 // if float only has 1 or less decimals DONE
+
+
+// ADD NEGATIVE BUTTON
+//const numNeg = function (str) {
+//  if (operator.length == 0) {
+//    if (typeof(num1) == 'string' && num1.length == 0) {
+//      num1 += str
+//      num1.textContent = str
+//      division.textContent = `${num1}`
+//    } else {
+//      num1 *= -1
+//      num1.textContent = str
+//      division.textContent = `${num1}`
+//    }
+//    review1()
+//  } else {
+//    if (typeof(num2) == 'string' && num2.length == 0) {
+//      num2 += str
+//      num2.textContent = str
+//      division.textContent = `${num2}`
+//    } else {
+//      num2 *= -1
+//      num2.textContent = str
+//      division.textContent = `${num2}`
+//    }
+//  }
+//  review2()
+//};
