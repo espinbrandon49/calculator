@@ -137,7 +137,6 @@ const numF = function (num) {
     division.textContent = `${num2}`
   }
 }
-
 // OPERATOR BUTTONS
 const operatorF = function (str) {
   if (operator.length == 0) {
@@ -243,9 +242,10 @@ const review2 = () => {
   console.log(typeof(solution), typeof(num1), typeof(num2))
 }
 
-console.log(buttonDec)
+
 
 // don't allow multiple decimals
+// handle operator pressed first ('+' num = NaN)
 // add keyboard support
 // style display 
 // make a placeholder 0
@@ -266,3 +266,9 @@ console.log(buttonDec)
 // decimal DONE
 // divide by zero 'Thanos Divided by Zero' DONE
 // if float only has 1 or less decimals DONE
+
+const decimal = document.getElementById('decimal') 
+const decimalOff = decimal.addEventListener("click", () => {decimal.  disabled = true })
+const decimalOn = decimal.addEventListener("click", () => {decimal.  disabled = false })
+  
+console.log(document.getElementById('decimal').attribute)
