@@ -4,6 +4,8 @@
   height: 726px;
   border-radius: 9px;
   border: thin solid black;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #container {
@@ -34,7 +36,7 @@ button {
   border: thin solid black;
   position:relative;
   left: 36px;  
-  bottom: -36px;
+  bottom: -41px;
   width: 100px;
   height: 100px
 }
@@ -57,32 +59,35 @@ button {
 
 .item18 {
   grid-area: item18;
-
+  background-color: #00BFFF;
 }
 .item19 {
   grid-area: item19;
   font-size: 35px;
+  background-color: #00BFFF;
 }
 .item20 {
   grid-area: item20;
   font-size: 35px;
+  background-color: #00BFFF;
 }
 .item17 {
   grid-area: item17;
   height: 210px;
+  background-color: #dd5956;
 }
 .item8 {
   grid-area: item8;  
 }
 .item9 {
   grid-area: item9;
-
 }
 .item10 {
   grid-area: item10;
 }
 .item15 {
   grid-area: item15;
+  background-color: #00BFFF;
 }
 .item5 {
   grid-area: item5;
@@ -95,6 +100,7 @@ button {
 }
 .item14 {
   grid-area: item14;
+  background-color: #00BFFF;
 }
 .item2 {
   grid-area: item2;
@@ -107,13 +113,16 @@ button {
 }
 .item13 {
   grid-area: item13;
+  background-color: #00BFFF;
 }
 .item11 {
   grid-area: item11;
 }
 .item16 {
   grid-area: item16;
+
 }
 .item12 {
   grid-area: item12;
+  background-color: #00BFFF;
 }
