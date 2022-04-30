@@ -249,7 +249,7 @@ const backspace = function (str) {
 const numNeg = function (str) {
   if (operator.length == 0) {
     if (typeof (num1) == 'string' && num1.length == 0) {
-      num1 += str
+      //num1 += str
       //num1.textContent = str
       division.textContent = `${num1}`
     } else {
@@ -259,7 +259,7 @@ const numNeg = function (str) {
     }
   } else {
     if (typeof (num2) == 'string' && num2.length == 0) {
-      num2 += str
+      //num2 += str
       //num2.textContent = str
       division.textContent = `${num2}`
     } else {
@@ -290,7 +290,8 @@ button0.onclick = () => numF(0)
 buttonDec.onclick = () => numF('.')
 buttonNeg.onclick = () => numNeg('-')
 
-// add keypress
+// add keydown
+// CSS Styling - calculator jpeg
 //THERE ARE NO MORE BUGS
-//ONLY WORK ON KEYPRESS THAN FINISHED
+//ONLY WORK ON KEYDOWN THAN FINISHED
 
