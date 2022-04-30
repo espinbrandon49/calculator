@@ -1,7 +1,7 @@
 .wrapper {
   background-color: black;
-  height: 700px;
   width: 505px;
+  height: 726px;
   border-radius: 9px;
   border: thin solid black;
 }
@@ -34,7 +34,7 @@ button {
   border: thin solid black;
   position:relative;
   left: 36px;  
-  bottom: -40px;
+  bottom: -36px;
   width: 100px;
   height: 100px
 }
@@ -51,7 +51,8 @@ button {
   align-items: center;
   position:relative;
   left: 36px; 
-  top: 30px;
+  top: 36px;
+  margin-bottom: 10px;
 }
 
 .item18 {
@@ -116,6 +117,3 @@ button {
 .item12 {
   grid-area: item12;
 }
-
-orange for ==
-pink for operators
