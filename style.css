@@ -1,16 +1,14 @@
 body{
   background-color: white;
+  
 }
 
 #container {
  display:grid;
  background-color: black;
- padding: 6px 6px 10px 10px;
- width: 410px;
- height: 600px;
- margin-left: auto;
- margin-right: auto;
- grid-gap: 2px 2px;
+
+ width: 500px;
+ min-height: 600px;
  grid-template-columns: repeat(4, 100px);
  grid-template-rows: auto;
  grid-template-areas: 
@@ -21,102 +19,100 @@ body{
       'item2 item3 item4 item13'
       'item11 item16 item15 item14'
  ;
+gap: 10px;
+
 }
+
+
 button {
-  font-size: 30px;
-  background-color: white;
+  font-size: 70px;
   border: none;
-  color: black;
+  background-color:gray;
+  color: white;
   border: thin solid black;
+  position:relative;
+  left: 35px;  
+  width: 100px;
+  height: 100px
 }
 .display {
   display: flex;
   grid-area: item1;
-  min-height: 50px;
+  height: 80px;
+  background-color: #bccd95;
   color: black;
-  font-size: 20px;
   border: thin solid black;
-  font-size: 40px;
-  align-items: flex-end;
+  font-size: 90px;
+  border-radius: 8px;
   justify-content: right;
-  background-color:gray
+  align-items: center;
+  position:relative;
+  left: 35px; 
+
 }
 
 .item18 {
   grid-area: item18;
-  background-color: chocolate;
+
 }
 .item19 {
   grid-area: item19;
-  background-color: chocolate;
+  font-size: 35px;
 }
 .item20 {
   grid-area: item20;
-  background-color: chocolate;
+  font-size: 35px;
 }
 .item17 {
   grid-area: item17;
-  background-color: chocolate;
+  height: 210px;
 }
 .item8 {
-  grid-area: item8;
-  background-color: blueviolet;
-  
+  grid-area: item8;  
 }
 .item9 {
   grid-area: item9;
-  background-color: blueviolet;
+
 }
 .item10 {
   grid-area: item10;
-  background-color: blueviolet;
 }
 .item15 {
   grid-area: item15;
-  background-color: chocolate;
 }
 .item5 {
   grid-area: item5;
-  background-color: blueviolet;
 }
 .item6 {
   grid-area: item6;
-  background-color: blueviolet;
 }
 .item7 {
   grid-area: item7;
-  background-color: blueviolet;
 }
 .item14 {
   grid-area: item14;
-  background-color: chocolate;
 }
 .item2 {
   grid-area: item2;
-  background-color: blueviolet;
 }
 .item3 {
   grid-area: item3;
-  background-color: blueviolet;
 }
 .item4 {
   grid-area: item4;
-  background-color: blueviolet;
 }
 .item13 {
   grid-area: item13;
-  background-color: chocolate;
 }
 .item11 {
   grid-area: item11;
-  background-color: blueviolet;
 }
 .item16 {
   grid-area: item16;
-  background-color: chocolate;
 }
 .item12 {
   grid-area: item12;
-  background-color: chocolate;
 }
 
+orange for ==
+pink for operators
