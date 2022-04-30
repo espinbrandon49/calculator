@@ -8,6 +8,7 @@ const operations = () => {
   num1 = ''
   num2 = ''
   operator = ''
+  decimal.disabled = false
 } 
 
 const add = function (num1, num2) {
@@ -68,24 +69,29 @@ const operate = function (operator, num1, num2) {
   if (num2.length === 0) {
       solution = parseFloat(num1 + num2 + solution) + 0
       operations()
+      console.log(num1, num2, operator, solution)
   } else {
     if (typeof(solution) != 'number') {
       if (operator == '+') {
         solution = (add(num1, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, operator, solution)
       } else if (operator == '-') {
         solution = (subtract(num1, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, operator, solution)
       } else if (operator == '*') {
         solution = (multiply(num1, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, operator, solution)
       } else if (operator == '/') {
         solution = (divide(num1, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, operator, solution)
       } else {
         console.log('error')
       }
@@ -94,18 +100,22 @@ const operate = function (operator, num1, num2) {
         solution = (add(solution, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, operator, solution)
       } else if (operator == '-') {
         solution = (subtract(solution, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, operator, solution)
       } else if (operator == '*') {
         solution = (multiply(solution, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, operator, solution)
       } else if (operator == '/') {
         solution = (divide(solution, num2))
         division.textContent = `${solution}`
         operations()
+        console.log(num1, num2, operator, solution)
       } else {
         console.log('error')
       }
@@ -137,23 +147,21 @@ const buttonDiv = document.querySelector('.divide');
 const buttonMlt = document.querySelector('.multiply');
 const buttonNeg = document.querySelector('.negative');
 
-
-
 // NUMBER BUTTONS
 const numF = function (num) {
-//  const decF1 = () => num1.indexOf('.') != -1 ? decimal.disabled = true : decimal.disabled = false
-//const decF2 = () => num2.indexOf('.') != -1 ? decimal.disabled = true : decimal.disabled = false
-//
+const decF1 = () => num1.indexOf('.') != -1 ? decimal.disabled = true : decimal.disabled = false
+const decF2 = () => num2.indexOf('.') != -1 ? decimal.disabled = true : decimal.disabled = false
+
   if (operator.length == 0) {
     num1 += num
     num1.textContent = num
     division.textContent = `${num1}`
-    //decF1()
+    decF1()
   } else {
     num2 += num
     num2.textContent = num
     division.textContent = `${num2}`
-    //decF2()
+    decF2()
   }
 }
 
@@ -282,27 +290,7 @@ button0.onclick = () => numF(0)
 buttonDec.onclick = () => numF('.')
 buttonNeg.onclick = () => numNeg('-')
 
-// refactor, esp remove some functions and logics no longer needed
 // add keypress
-
-// style display DONE 
-// make a placeholder 0 DONE
-// Negator Bug
-// multiple equal still an issue DONE
-// handle operator pressed first ('+' num = NaN) DONE
-// don't allow multiple decimals DONE
-// handle multiple '=' (6+3 == crash) DONE 
-// handle if equal is used with only 1 operand and an operator DONE
-// handle if equal is used with only an operator DONE
-// handle if equal is used with multiple operators DONE
-// handle more than 2 operands  DONE 
-// Backspace bug DONE
-// handle consecutive operations DONE
-// handle if equal is used with only 1 operand DONE
-// input negatives DONE
-// handle if equal is used only DONE
-// backspace DONE
-// decimal DONE
-// divide by zero 'Thanos Divided by Zero' DONE
-// if float only has 1 or less decimals DONE
+//THERE ARE NO MORE BUGS
+//ONLY WORK ON KEYPRESS THAN FINISHED
 
