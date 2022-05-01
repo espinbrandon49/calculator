@@ -156,13 +156,13 @@ const numF = function (num) {
     num1 += num
     num1.textContent = num
     division.textContent = `${num1}`
-    review1()
+
     decF1()
   } else {
     num2 += num
     num2.textContent = num
     division.textContent = `${num2}`
-    review2()
+
     decF2()
   }
 }
@@ -269,17 +269,51 @@ const checkKeyPress1 = (key) => (key.keyCode == '49') ? numF(1) : 0
 const checkKeyPress2 = (key) => (key.keyCode == '50') ? numF(2) : 0
 const checkKeyPress3 = (key) => (key.keyCode == '51') ? numF(3) : 0
 const checkKeyPress0 = (key) => (key.keyCode == '48') ? numF(0) : 0
+const checkKeyPressS = (key) => (key.keyCode == '109') ? numF(0) : 0
+
 //const checkKeyPressDecimal = (key) => (key.keyCode == '190') ? numF('.'): 0
 
-function checkKeyPressDecimal(key) {
-  if (key.keyCode == '190') {
-      console.log('reading')
-      numF('.')
-      console.log(key)
-    }
-  }
+//function checkKeyPressDecimal(key) {
+//  if (key.keyCode == '190') {
+//      console.log('reading')
+//      numF('.')
+//      console.log(key)
+//    }
+//  }
 
-window.addEventListener('keydown', checkKeyPressDecimal, false)
+//window.addEventListener('keydown', checkKeyPressDecimal, false)
+
+function keyAdd (e) {
+  let x = e.keyCode;
+  if (x == '187') {
+    operatorF('+')
+  }
+}
+window.addEventListener('keydown', keyAdd, false)
+
+function keySubtract (e) {
+  let x = e.keyCode;
+  if (x == '189') {
+    operatorF('-')
+  }
+}
+window.addEventListener('keydown', keySubtract, false)
+
+function keyMulti (e) {
+  let x = e.keyCode;
+  if (x == '88') {
+    operatorF('*')
+  }
+}
+window.addEventListener('keydown', keyMulti, false)
+
+function keyDivi (e) {
+  let x = e.keyCode;
+  if (x == '191') {
+    operatorF('/')
+  }
+}
+window.addEventListener('keydown', keyDivi, false)
 
 
 buttonC.onclick = () => backspace()
@@ -287,7 +321,8 @@ buttonEq.onclick = () => operate(operator, num1, num2)
 buttonAdd.onclick = () => operatorF('+') // 187
 buttonSub.onclick = () => operatorF('-') // 189
 buttonDiv.onclick = () => operatorF('/') // 191
-buttonMlt.onclick = () => operatorF('*') // 56
+buttonMlt.onclick = () => operatorF('*') // 56/88
+
 button7.onclick = () => numF(7)
 window.addEventListener('keydown', checkKeyPress7, false)
 button8.onclick = () => numF(8)
