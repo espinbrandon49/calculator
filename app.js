@@ -148,7 +148,6 @@ const buttonMlt = document.querySelector('.multiply');
 const buttonNeg = document.querySelector('.negative');
 
 // NUMBER BUTTONS
-
 const numF = function (num) {
   const decF1 = () => num1.indexOf('.') != -1 ? decimal.disabled = true : decimal.disabled = false
   const decF2 = () => num2.indexOf('.') != -1 ? decimal.disabled = true : decimal.disabled = false
@@ -156,13 +155,11 @@ const numF = function (num) {
     num1 += num
     num1.textContent = num
     division.textContent = `${num1}`
-
     decF1()
   } else {
     num2 += num
     num2.textContent = num
     division.textContent = `${num2}`
-
     decF2()
   }
 }
@@ -239,7 +236,7 @@ const backspace = function (str) {
 }
 
 // ADD NEGATIVE BUTTON
-const numNeg = function (str) {
+const numNeg = function () {
   if (operator.length == 0) {
     if (typeof (num1) == 'string' && num1.length == 0) {
       division.textContent = `${num1}`
@@ -257,7 +254,6 @@ const numNeg = function (str) {
   }
 };
 
-
 const checkKeyPress7 = (key) => (key.keyCode == '55') ? numF(7) : 0
 const checkKeyPress8 = (key) => (key.keyCode == '56') ? numF(8) : 0
 const checkKeyPress9 = (key) => (key.keyCode == '57') ? numF(9) : 0
@@ -268,7 +264,6 @@ const checkKeyPress1 = (key) => (key.keyCode == '49') ? numF(1) : 0
 const checkKeyPress2 = (key) => (key.keyCode == '50') ? numF(2) : 0
 const checkKeyPress3 = (key) => (key.keyCode == '51') ? numF(3) : 0
 const checkKeyPress0 = (key) => (key.keyCode == '48') ? numF(0) : 0
-const checkKeyPressS = (key) => (key.keyCode == '109') ? numF(0) : 0
 
 function keyAdd (e) {
   let x = e.keyCode;
@@ -331,6 +326,26 @@ function keyDeleti (e) {
 }
 window.addEventListener('keydown', keyDeleti, false)
 
+function keyDeci (e) {
+  let x = e.keyCode;
+  if (x == '190') {
+    if (decimal.disabled != true) {
+      numF('.')
+    } else {
+      null
+    }
+  }
+}
+window.addEventListener('keydown', keyDeci, false)
+
+function keyNegi (e) {
+  let x = e.keyCode;
+  if (x == '65') {
+    numNeg()
+  }
+}
+window.addEventListener('keydown', keyNegi, false)
+
 buttonC.onclick = () => backspace() //67
 buttonEq.onclick = () => operate(operator, num1, num2)
 buttonAdd.onclick = () => operatorF('+') // 187
@@ -359,5 +374,4 @@ window.addEventListener('keydown', checkKeyPress3, false)
 button0.onclick = () => numF(0)
 window.addEventListener('keydown', checkKeyPress0, false)
 buttonDec.onclick = () => numF('.')
-//window.addEventListener('keypress', checkKeyPressDecimal, false)
-buttonNeg.onclick = () => numNeg('-')
+buttonNeg.onclick = () => numNeg()
