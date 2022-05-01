@@ -82,7 +82,7 @@ const operate = function (operator, num1, num2) {
         division.textContent = `${solution}`
         operations()
         console.log(num1, num2, operator, solution)
-      } else if (operator == '*') {
+      } else if (operator == 'x') {
         solution = (multiply(num1, num2))
         division.textContent = `${solution}`
         operations()
@@ -106,7 +106,7 @@ const operate = function (operator, num1, num2) {
         division.textContent = `${solution}`
         operations()
         console.log(num1, num2, operator, solution)
-      } else if (operator == '*') {
+      } else if (operator == 'x') {
         solution = (multiply(solution, num2))
         division.textContent = `${solution}`
         operations()
@@ -257,7 +257,6 @@ const numNeg = function (str) {
   }
 };
 
-//BUTTON CLICKS
 
 const checkKeyPress7 = (key) => (key.keyCode == '55') ? numF(7) : 0
 const checkKeyPress8 = (key) => (key.keyCode == '56') ? numF(8) : 0
@@ -270,18 +269,6 @@ const checkKeyPress2 = (key) => (key.keyCode == '50') ? numF(2) : 0
 const checkKeyPress3 = (key) => (key.keyCode == '51') ? numF(3) : 0
 const checkKeyPress0 = (key) => (key.keyCode == '48') ? numF(0) : 0
 const checkKeyPressS = (key) => (key.keyCode == '109') ? numF(0) : 0
-
-//const checkKeyPressDecimal = (key) => (key.keyCode == '190') ? numF('.'): 0
-
-//function checkKeyPressDecimal(key) {
-//  if (key.keyCode == '190') {
-//      console.log('reading')
-//      numF('.')
-//      console.log(key)
-//    }
-//  }
-
-//window.addEventListener('keydown', checkKeyPressDecimal, false)
 
 function keyAdd (e) {
   let x = e.keyCode;
@@ -302,7 +289,7 @@ window.addEventListener('keydown', keySubtract, false)
 function keyMulti (e) {
   let x = e.keyCode;
   if (x == '88') {
-    operatorF('*')
+    operatorF('x')
   }
 }
 window.addEventListener('keydown', keyMulti, false)
@@ -315,13 +302,41 @@ function keyDivi (e) {
 }
 window.addEventListener('keydown', keyDivi, false)
 
+function keyEqui (e) {
+  let x = e.keyCode;
+  if (x == '61') {
+    operate(operator, num1, num2)
+  }
+}
+window.addEventListener('keydown', keyEqui, false)
 
-buttonC.onclick = () => backspace()
+function keyBacki (e) {
+  let x = e.keyCode;
+  if (x == '67') {
+    backspace()
+  }
+}
+window.addEventListener('keydown', keyBacki, false)
+
+function keyDeleti (e) {
+  let x = e.keyCode;
+  if (x == '46') {
+      division.textContent = "0."
+      num1 = ''
+      num2 = ''
+      operator = ''
+      solution = ''
+      decimal.disabled = false
+  }
+}
+window.addEventListener('keydown', keyDeleti, false)
+
+buttonC.onclick = () => backspace() //67
 buttonEq.onclick = () => operate(operator, num1, num2)
 buttonAdd.onclick = () => operatorF('+') // 187
 buttonSub.onclick = () => operatorF('-') // 189
 buttonDiv.onclick = () => operatorF('/') // 191
-buttonMlt.onclick = () => operatorF('*') // 56/88
+buttonMlt.onclick = () => operatorF('x') // 56/88
 
 button7.onclick = () => numF(7)
 window.addEventListener('keydown', checkKeyPress7, false)
@@ -346,20 +361,3 @@ window.addEventListener('keydown', checkKeyPress0, false)
 buttonDec.onclick = () => numF('.')
 //window.addEventListener('keypress', checkKeyPressDecimal, false)
 buttonNeg.onclick = () => numNeg('-')
-
-
-
-//function checkKeyPress8(key) {
-//  if (key.keyCode == '56') {
-//    numF(8)
-//  }
-//}
-
-//window.addEventListener('keydown', checkKeyPress7, false)
-//function checkKeyPress(key) {
-//  if (key.keyCode == '55') {
-//    numF(7)
-//  }
-//}
-
-// add keydown
