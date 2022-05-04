@@ -7,37 +7,40 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 #container {
- display:grid;
- background-color: black;
- border-radius: 9px;
- border: thin solid black;
- width: 500px;
- min-height: 600px;
- grid-template-columns: repeat(4, 100px);
- grid-template-rows: auto;
- grid-template-areas: 
-      'item1 item1 item1 item1'
-      'item18 item19 item20 item17'
-      'item8 item9 item10 item17'
-      'item5 item6 item7 item12'
-      'item2 item3 item4 item13'
-      'item11 item16 item15 item14'
- ;
-gap: 10px;
+  display: grid;
+  background-color: black;
+  border-radius: 9px;
+  border: thin solid black;
+  width: 500px;
+  min-height: 600px;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: auto;
+  grid-template-areas:
+    'item1 item1 item1 item1'
+    'item18 item19 item20 item17'
+    'item8 item9 item10 item17'
+    'item5 item6 item7 item12'
+    'item2 item3 item4 item13'
+    'item11 item16 item15 item14'
+  ;
+  gap: 10px;
 }
+
 button {
   font-size: 70px;
   border: none;
-  background-color:gray;
+  background-color: gray;
   color: white;
   border: thin solid black;
-  position:relative;
-  left: 36px;  
+  position: relative;
+  left: 36px;
   bottom: -41px;
   width: 100px;
   height: 100px
 }
+
 .display {
   display: flex;
   grid-area: item1;
@@ -49,79 +52,102 @@ button {
   border-radius: 8px;
   justify-content: right;
   align-items: center;
-  position:relative;
-  left: 36px; 
+  position: relative;
+  left: 36px;
   top: 36px;
   margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
+
 .item18 {
   grid-area: item18;
   background-color: #00BFFF;
 }
+
 .item19 {
   grid-area: item19;
   font-size: 35px;
   background-color: #00BFFF;
 }
+
 .item20 {
   grid-area: item20;
   font-size: 35px;
   background-color: #00BFFF;
 }
+
 .item17 {
   grid-area: item17;
   height: 210px;
   background-color: #dd5956;
 }
+
 .item8 {
-  grid-area: item8;  
+  grid-area: item8;
 }
+
 .item9 {
   grid-area: item9;
 }
+
 .item10 {
   grid-area: item10;
 }
+
 .item15 {
   grid-area: item15;
   background-color: #00BFFF;
 }
+
 .item5 {
   grid-area: item5;
 }
+
 .item6 {
   grid-area: item6;
 }
+
 .item7 {
   grid-area: item7;
 }
+
 .item14 {
   grid-area: item14;
   background-color: #00BFFF;
 }
+
 .item2 {
   grid-area: item2;
 }
+
 .item3 {
   grid-area: item3;
 }
+
 .item4 {
   grid-area: item4;
 }
+
 .item13 {
   grid-area: item13;
   background-color: #00BFFF;
 }
+
 .item11 {
   grid-area: item11;
 }
+
 .item16 {
   grid-area: item16;
 }
+
 .item12 {
   grid-area: item12;
   background-color: #00BFFF;
 }
+
 .note {
-margin-left: 410px;
+  margin-left: 280px;
 }
